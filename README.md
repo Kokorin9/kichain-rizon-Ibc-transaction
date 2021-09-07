@@ -45,7 +45,6 @@ $ nano kichain_config.json
 
 $ nano rizon_config.json
 
-```yaml
 {
   "chain-id": "groot-011",
   "rpc-addr": "http://127.0.0.1:26652",
