@@ -270,7 +270,7 @@ $ rly q balance groot-011
 **15) Creating a service**
 
 My kichain service is named kii
-
+```
 sudo tee /etc/systemd/system/rlyd.service > /dev/null <<EOF
 [Unit]
 
@@ -288,7 +288,7 @@ LimitNOFILE=65535
 [Install]
 WantedBy=multi-user.target
 EOF
-
+```
 **16) After that we shall start a service file and check logs**
 
 $ sudo systemctl daemon-reload <br/>
