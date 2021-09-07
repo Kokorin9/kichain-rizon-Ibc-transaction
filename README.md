@@ -6,13 +6,17 @@ In my case they were on one server, so rizon ports needed to be changed
 ```
 $ rizond q ibc-transfer params
 ```
+```
 receive_enabled: true
 send_enabled: true
+```
 ```
 $ kid q ibc-transfer params
 ```
+```
 receive_enabled: true
 send_enabled: true
+```
 
 Everything is in order and cross-transactions are available between these two networks
 
