@@ -32,7 +32,7 @@ $ mkdir rly_config
 $ cd rly_config
 
 $ nano kichain_config.json
-
+```
 {
   "chain-id": "kichain-t-4",
   "rpc-addr": "http://127.0.0.1:26657",
@@ -41,9 +41,9 @@ $ nano kichain_config.json
   "gas-prices": "0.025utki",
   "trusting-period": "48h"
 }
-
+```
 $ nano rizon_config.json
-
+```
 {
   "chain-id": "groot-011",
   "rpc-addr": "http://127.0.0.1:26652",
@@ -52,7 +52,7 @@ $ nano rizon_config.json
   "gas-prices": "0.0001uatolo",
   "trusting-period": "48h"
 }
-
+```
 **4) We will then add this to relayer config**
 $ rly chains add -f kichain_config.json
 $ rly chains add rizon_config.json
@@ -101,7 +101,7 @@ Generated path(transfer), run 'rly paths show transfer --yaml' to see details
 **10) After that we can confirm in a config file that a new path has been created**
 
 $ nano ~/.relayer/config/config.yaml 
-
+```
 {
 global:
   api-listen-addr: :5183
@@ -143,7 +143,7 @@ paths:
     strategy:
       type: naive
       }
-
+```
 Here we can also change timeout params from
 *timeout: 10s* 
 to
@@ -214,7 +214,7 @@ We can find channes of the networks in path sections of the config file
 
 $ nano ~/.relayer/config/config.yaml
 
-
+```
 {
 paths:
   transfer:
@@ -237,7 +237,7 @@ paths:
     strategy:
       type: naive
       }
-
+```
 
 $ kid tx ibc-transfer transfer transfer channel-50 rizon19hnej3ucqqls5wcn40cv00s9qvasgy38jvpnqu 1000utki --from kokorin9 --fees=5000utki --gas=auto --chain-id kichain-t-4 --home /root/testnet/kid --keyring-dir /root/.kid/
 
