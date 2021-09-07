@@ -99,7 +99,7 @@ Generated path(transfer), run 'rly paths show transfer --yaml' to see details
 
 $ nano ~/.relayer/config/config.yaml 
 
-global:
+{global:
   api-listen-addr: :5183
   timeout: 10m
   light-cache-size: 20
@@ -137,7 +137,7 @@ paths:
       order: UNORDERED
       version: ics20-1
     strategy:
-      type: naive
+      type: naive}
 
 Here we can also change timeout params from
 *timeout: 10s* 
