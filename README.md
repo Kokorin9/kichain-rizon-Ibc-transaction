@@ -2,7 +2,7 @@ Here I will describe the process of creating a relayer between two cosmos networ
 Rizon and Kichain to be exact
 In my case they were on one server, so rizon ports needed to be changed
 
-**First of all we need tockeck is this is at all possible ( it wasn't until kichain-t-4 =) )**
+**First of all we need to check is this is at all possible ( it wasn't until kichain-t-4 =) )**
 ```
 $ rizond q ibc-transfer params
 ```
