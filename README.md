@@ -38,7 +38,7 @@ $ mkdir rly_config
 $ cd rly_config
 ```
 $ nano kichain_config.json
-```
+```json
 {
   "chain-id": "kichain-t-4",
   "rpc-addr": "http://127.0.0.1:26657",
@@ -47,9 +47,9 @@ $ nano kichain_config.json
   "gas-prices": "0.025utki",
   "trusting-period": "48h"
 }
-```
+```json
 $ nano rizon_config.json
-```
+```json
 {
   "chain-id": "groot-011",
   "rpc-addr": "http://127.0.0.1:26652",
@@ -58,7 +58,7 @@ $ nano rizon_config.json
   "gas-prices": "0.0001uatolo",
   "trusting-period": "48h"
 }
-```
+```json
 **4) We will then add this to relayer config**
 ```
 $ rly chains add -f kichain_config.json
