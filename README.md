@@ -140,9 +140,9 @@ paths:
       type: naive
 
 Here we can also change timeout params from
-timeout: 10s 
+*timeout: 10s* 
 to
-timeout: 10m 
+*timeout: 10m* 
 
 To be sure that our transactions will occur
 
