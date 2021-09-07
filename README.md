@@ -3,12 +3,14 @@ Rizon and Kichain to be exact
 In my case they were on one server, so rizon ports needed to be changed
 
 **First of all we need tockeck is this is at all possible ( it wasn't until kichain-t-4 =) )**
-
+```
 $ rizond q ibc-transfer params
+```
 receive_enabled: true
 send_enabled: true
-
+```
 $ kid q ibc-transfer params
+```
 receive_enabled: true
 send_enabled: true
 
@@ -153,29 +155,34 @@ to
 To be sure that our transactions will occur
 
 **10) We shall check that pass** 
-
+```
 $ rly paths list
-
+```
+```
 0: transfer             -> chns(✔) clnts(✔) conn(✔) chan(✔) (kichain-t-4:transfer<>groot-011:transfer)
-
+```
 We can see checkmarks – everything is good at this point
 
 
 **11) We can also check if the chains are ready to relay over**
-
+```
 $ rly chains list
+```
 
+```
  0: kichain-t-4          -> key(✔) bal(✔) light(✔) path(✔)
  1: groot-011            -> key(✔) bal(✔) light(✔) path(✔)
-
+```
 Good to go
 
 
 **12) We can transfer funds between out test wallets**
-
+```
 $ rly tx transfer groot-011 kichain-t-4 1000uatolo $(rly chains address kichain-t-4)
-
+```
+```
 ✔ [groot-011]@{418670} - msg(0:transfer) 
+```
 
 hash(0FA4A42C8FDCFA6CDB949947A7D463B36083FC5E55A876DE91DB3979641EEFBE)
 https://testnet.mintscan.io/rizon/txs/0FA4A42C8FDCFA6CDB949947A7D463B36083FC5E55A876DE91DB3979641EEFBE
@@ -194,10 +201,12 @@ https://testnet.mintscan.io/rizon/txs/4AEA97EACCA7CFF353C0050D566162F40463E416EB
 hash(F2D7B9B829C1214BFD736C8535EE64E8C3538C2AD5E5D6F75DEFB6CE07F77981)
 https://testnet.mintscan.io/rizon/txs/F2D7B9B829C1214BFD736C8535EE64E8C3538C2AD5E5D6F75DEFB6CE07F77981
 
-
+```
 $ rly tx transfer kichain-t-4 groot-011  1000utki $(rly chains address groot-011)
-
+```
+```
 ✔ [kichain-t-4]@{220648} – msg(0:transfer)
+```
 
 hash(7C648BBBEE840795B39BA0CA6ED27F60D873A8822ECDB2F75C23D713EC26741D)
 hash(FC47D8D36710EA56C6B8313CDEF4313E97B3D3EC7AA2B81EF36819B04B269D9F)
@@ -209,12 +218,12 @@ These are working quite nicely
 
 **13) And after that we can transfer funds from our main wallets**
 
-In ma case I have to use keyring-dir flag for kichain
+In my case I have to use keyring-dir flag for kichain
 
 We can find channes of the networks in path sections of the config file
-
+```
 $ nano ~/.relayer/config/config.yaml
-
+```
 ```
 {
 paths:
@@ -239,15 +248,17 @@ paths:
       type: naive
       }
 ```
-
+```
 $ kid tx ibc-transfer transfer transfer channel-50 rizon19hnej3ucqqls5wcn40cv00s9qvasgy38jvpnqu 1000utki --from kokorin9 --fees=5000utki --gas=auto --chain-id kichain-t-4 --home /root/testnet/kid --keyring-dir /root/.kid/
+```
 
 "txhash":"87CF2B9D4BFE3AE8084ADE6A3EDE6E509602539065F643E5211E037CE1E66A62"
 "txhash":"CF527CF1DFB14F075C1E8B53B8F87541B10AE118F032CEB442A255AE3496E4C1
 
 And node flag for rizon 
-
+```
 $ rizond tx ibc-transfer transfer transfer channel-14 tki1j0yvamr7vts0ka7zzl2fjc0k5k3srwssdl008p 1000uatolo --from kokorin9 --fees=5000uatolo --gas=auto --chain-id groot-011 --node "tcp://127.0.0.1:26652"
+```
 
 Everything went smoothly
 
@@ -261,12 +272,18 @@ txhash: E688590FD449591837E38770695961947502F07DEA51196C0315BEAEC61A8D1D
 txhash: 53CB374E353769B2867355DD6E80ABE891B57DF2FFC5BF26905DFA4FF17DE25D
 
 **14) We can check balances again**
-
+```
 $ rly q balance kichain-t-4
+```
+```
 8000transfer/channel-50/uatolo,214643utki
-
+```
+```
 $ rly q balance groot-011
+```
+```
 6000transfer/channel-14/utki,9994453uatolo
+```
 
 **15) Creating a service**
 
@@ -291,16 +308,18 @@ WantedBy=multi-user.target
 EOF
 ```
 **16) After that we shall start a service file and check logs**
-
+```
 $ sudo systemctl daemon-reload <br/>
 $ sudo systemctl enable rlyd <br/>
 $ sudo systemctl start rlyd <br/> 
 $ journalctl -u rlyd -f <br/>
-
+```
+```
 Started relayer client.
 I[2021-09-07|11:19:35.699] - listening to tx events from kichain-t-4...<br/>
 rly[2780953]: I[2021-09-07|11:19:35.699] - listening to block events from kichain-t-4...<br/>
- rly[2780953]: I[2021-09-07|11:19:35.712] - listening to tx events from groot-011...<br/>
+rly[2780953]: I[2021-09-07|11:19:35.712] - listening to tx events from groot-011...<br/>
 rly[2780953]: I[2021-09-07|11:19:35.716] - listening to block events from groot-011...<br/>
 rly[2780953]: I[2021-09-07|11:19:36.418] - No packets to relay between [kichain-t-4]port{transfer} and [groot-011]port{transfer}<br/>
 rly[2780953]: I[2021-09-07|11:19:38.890] • [kichain-t-4]@{229433} - actions(0:withdraw_delegator_reward,1:withdraw_delegator_reward,2:withdraw_delegator_reward,3:withdraw_delegator_reward)<br/> hash(69D9DED54B417730C8CCC333E7D8A8D9D7D35EA2EFB9803BB2D7291E55CF4581)
+```
