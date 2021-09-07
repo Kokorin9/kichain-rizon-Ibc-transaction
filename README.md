@@ -283,10 +283,10 @@ EOF
 
 **16) After that we shall start a service file and check logs**
 
-$ sudo systemctl daemon-reload
-$ sudo systemctl enable rlyd
-$ sudo systemctl start rlyd 
-$ journalctl -u rlyd -f 
+$ sudo systemctl daemon-reload <br/>
+$ sudo systemctl enable rlyd <br/>
+$ sudo systemctl start rlyd <br/> 
+$ journalctl -u rlyd -f <br/>
 
 Started relayer client.
 I[2021-09-07|11:19:35.699] - listening to tx events from kichain-t-4...
