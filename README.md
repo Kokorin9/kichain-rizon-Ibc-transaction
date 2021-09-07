@@ -44,6 +44,7 @@ $ nano kichain_config.json
 }
 
 $ nano rizon_config.json
+
 ```yaml
 {
   "chain-id": "groot-011",
