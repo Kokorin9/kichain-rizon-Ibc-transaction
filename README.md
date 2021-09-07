@@ -2,7 +2,7 @@ Here I will describe the process of creating a relayer between two cosmos networ
 Rizon and Kichain to be exact
 In my case they were on one server, so rizon ports needed to be changed
 
-First of all we need tockeck is this is at all possible ( it wasn't until kichain-t-4 =) )
+**First of all we need tockeck is this is at all possible ( it wasn't until kichain-t-4 =) )**
 
 $ rizond q ibc-transfer params
 receive_enabled: true
@@ -14,16 +14,16 @@ send_enabled: true
 
 Everything is in order and cross-transactions are available between these two networks
 
-1) We need to install a relayer
+**1) We need to install a relayer**
 https://github.com/cosmos/relayer
 $ git clone git@github.com:cosmos/relayer.git
 $ git checkout v0.9.3
 $ cd relayer && make install
 
-2) We need to initialize it
+**2) We need to initialize it**
 $ rly config init
 
-3) And create chain configurations
+**3) And create chain configurations**
 In our particular case we will make a new directory and store those configurations there 
 
 $ mkdir rly_config
@@ -48,11 +48,11 @@ $ nano rizon_config.json
   "trusting-period": "48h"
 }
 
-4) We will then add this to relayer config
+**4) We will then add this to relayer config**
 $ rly chains add -f kichain_config.json
 $ rly chains add rizon_config.json
 
-5) Next step is creating new keys and addresses
+**5) Next step is creating new keys and addresses**
 
 $ rly keys add kichain-t-4 wallet_name
 $ rly keys add groot-011 wallet_name_2
@@ -62,13 +62,13 @@ Or we can restore them if previousl experemented in kichain-t-3
 $ rly keys restore kichain-t-4 wallet_name “mnemonic”
 $ rly keys restore groot-011 wallet_name_2 “mnemonic”
 
-6) Then we need to add these keys to relayer config
+**6) Then we need to add these keys to relayer config**
 
 $ rly chains edit kichaint-4 key wallet_name
 $ rly chains edit groot-011 key wallet_name_2
 
 
-7) I personally received addresses in kichain and rizon network
+**7) I personally received addresses in kichain and rizon network**
 I used a faucet in rizon network to get some coins and transferred coins from my main kichain wallet to new one
 
 We need to check the balances to make sure the funds are there
@@ -76,7 +76,7 @@ We need to check the balances to make sure the funds are there
 rly q balance kichain-t-4
 rly q balance groot-011
 
-8) Next step is clients initializing for both networks
+**8) Next step is clients initializing for both networks**
 
 $ rly light init kichain-t-4
 
@@ -86,14 +86,14 @@ $ rly light init groot-011
 
 successfully created light client for groot-011 by trusting endpoint http://127.0.0.1:26652…
 
-9) We create a channel between two networks
+**9) We create a channel between two networks**
 
 $ rly paths generate kichain-t-4 groot-011 transfer --port=transfer
 
 Generated path(transfer), run 'rly paths show transfer --yaml' to see details
 
 
-10) After that we can confirm in a config file that a new path has been created
+**10) After that we can confirm in a config file that a new path has been created**
 
 $ nano ~/.relayer/config/config.yaml 
 
@@ -144,7 +144,7 @@ timeout: 10m
 
 To be sure that our transactions will occur
 
-10) We shall check that pass
+**10) We shall check that pass** 
 
 $ rly paths list
 
@@ -153,7 +153,7 @@ $ rly paths list
 We can see checkmarks – everything is good at this point
 
 
-11) We can also check if the chains are ready to relay over
+**11) We can also check if the chains are ready to relay over**
 
 $ rly chains list
 
@@ -163,7 +163,7 @@ $ rly chains list
 Good to go
 
 
-12) We can transfer funds between out test wallets
+**12) We can transfer funds between out test wallets**
 
 $ rly tx transfer groot-011 kichain-t-4 1000uatolo $(rly chains address kichain-t-4)
 
@@ -199,7 +199,7 @@ hash(DD540C67BA90B1571181FE8964E3F553A8F688922B7A1E43543624B99A6BB858)
 
 These are working quite nicely
 
-13) And after that we can transfer funds from our main wallets
+**13) And after that we can transfer funds from our main wallets**
 
 In ma case I have to use keyring-dir flag for kichain
 
@@ -249,7 +249,7 @@ txhash: 376B1622589DE70DB28F4F5C037CB38693A4F52EEFD10B100886BC1D48E20197
 txhash: E688590FD449591837E38770695961947502F07DEA51196C0315BEAEC61A8D1D
 txhash: 53CB374E353769B2867355DD6E80ABE891B57DF2FFC5BF26905DFA4FF17DE25D
 
-14) We can check balances again
+**14) We can check balances again**
 
 $ rly q balance kichain-t-4
 8000transfer/channel-50/uatolo,214643utki
@@ -257,7 +257,7 @@ $ rly q balance kichain-t-4
 $ rly q balance groot-011
 6000transfer/channel-14/utki,9994453uatolo
 
-15) Creating a service
+**15) Creating a service**
 
 My kichain service is named kii
 
@@ -279,7 +279,7 @@ LimitNOFILE=65535
 WantedBy=multi-user.target
 EOF
 
-16) After that we shall start a service file and check logs
+**16) After that we shall start a service file and check logs**
 
 sudo systemctl daemon-reload
 sudo systemctl enable rlyd
