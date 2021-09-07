@@ -16,21 +16,21 @@ Everything is in order and cross-transactions are available between these two ne
 
 **1) We need to install a relayer**
 https://github.com/cosmos/relayer
-
+```
 $ git clone git@github.com:cosmos/relayer.git
 $ git checkout v0.9.3
 $ cd relayer && make install
-
+```
 **2) We need to initialize it**
-
+```
 $ rly config init
-
+```
 **3) And create chain configurations**
 In our particular case we will make a new directory and store those configurations there 
-
+```
 $ mkdir rly_config
 $ cd rly_config
-
+```
 $ nano kichain_config.json
 ```
 {
@@ -54,47 +54,48 @@ $ nano rizon_config.json
 }
 ```
 **4) We will then add this to relayer config**
+```
 $ rly chains add -f kichain_config.json
 $ rly chains add rizon_config.json
-
+```
 **5) Next step is creating new keys and addresses**
-
+```
 $ rly keys add kichain-t-4 wallet_name
 $ rly keys add groot-011 wallet_name_2
-
+```
 Or we can restore them if previousl experemented in kichain-t-3
-
+```
 $ rly keys restore kichain-t-4 wallet_name “mnemonic”
 $ rly keys restore groot-011 wallet_name_2 “mnemonic”
-
+```
 **6) Then we need to add these keys to relayer config**
-
+```
 $ rly chains edit kichaint-4 key wallet_name
 $ rly chains edit groot-011 key wallet_name_2
-
+```
 
 **7) I personally received addresses in kichain and rizon network**
 I used a faucet in rizon network to get some coins and transferred coins from my main kichain wallet to new one
 
 We need to check the balances to make sure the funds are there
-
+```
 rly q balance kichain-t-4
 rly q balance groot-011
-
+```
 **8) Next step is clients initializing for both networks**
-
+```
 $ rly light init kichain-t-4
-
+```
 successfully created light client for kichain-t-4 by trusting endpoint http://127.0.0.1:26657...
-
+```
 $ rly light init groot-011
-
+```
 successfully created light client for groot-011 by trusting endpoint http://127.0.0.1:26652…
 
 **9) We create a channel between two networks**
-
+```
 $ rly paths generate kichain-t-4 groot-011 transfer --port=transfer
-
+```
 Generated path(transfer), run 'rly paths show transfer --yaml' to see details
 
 
