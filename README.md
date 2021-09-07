@@ -297,9 +297,9 @@ $ sudo systemctl start rlyd <br/>
 $ journalctl -u rlyd -f <br/>
 
 Started relayer client.
-I[2021-09-07|11:19:35.699] - listening to tx events from kichain-t-4...
-rly[2780953]: I[2021-09-07|11:19:35.699] - listening to block events from kichain-t-4...
- rly[2780953]: I[2021-09-07|11:19:35.712] - listening to tx events from groot-011...
-rly[2780953]: I[2021-09-07|11:19:35.716] - listening to block events from groot-011...
-rly[2780953]: I[2021-09-07|11:19:36.418] - No packets to relay between [kichain-t-4]port{transfer} and [groot-011]port{transfer}
-rly[2780953]: I[2021-09-07|11:19:38.890] • [kichain-t-4]@{229433} - actions(0:withdraw_delegator_reward,1:withdraw_delegator_reward,2:withdraw_delegator_reward,3:withdraw_delegator_reward) hash(69D9DED54B417730C8CCC333E7D8A8D9D7D35EA2EFB9803BB2D7291E55CF4581)
+I[2021-09-07|11:19:35.699] - listening to tx events from kichain-t-4...<br/>
+rly[2780953]: I[2021-09-07|11:19:35.699] - listening to block events from kichain-t-4...<br/>
+ rly[2780953]: I[2021-09-07|11:19:35.712] - listening to tx events from groot-011...<br/>
+rly[2780953]: I[2021-09-07|11:19:35.716] - listening to block events from groot-011...<br/>
+rly[2780953]: I[2021-09-07|11:19:36.418] - No packets to relay between [kichain-t-4]port{transfer} and [groot-011]port{transfer}<br/>
+rly[2780953]: I[2021-09-07|11:19:38.890] • [kichain-t-4]@{229433} - actions(0:withdraw_delegator_reward,1:withdraw_delegator_reward,2:withdraw_delegator_reward,3:withdraw_delegator_reward)<br/> hash(69D9DED54B417730C8CCC333E7D8A8D9D7D35EA2EFB9803BB2D7291E55CF4581)
