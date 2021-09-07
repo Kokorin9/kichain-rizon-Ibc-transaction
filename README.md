@@ -92,17 +92,23 @@ rly q balance groot-011
 ```
 $ rly light init kichain-t-4
 ```
+```
 successfully created light client for kichain-t-4 by trusting endpoint http://127.0.0.1:26657...
+```
 ```
 $ rly light init groot-011
 ```
+```
 successfully created light client for groot-011 by trusting endpoint http://127.0.0.1:26652…
+```
 
 **9) We create a channel between two networks**
 ```
 $ rly paths generate kichain-t-4 groot-011 transfer --port=transfer
 ```
+```
 Generated path(transfer), run 'rly paths show transfer --yaml' to see details
+```
 
 
 **10) After that we can confirm in a config file that a new path has been created**
