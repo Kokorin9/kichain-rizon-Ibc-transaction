@@ -32,6 +32,7 @@ $ mkdir rly_config
 $ cd rly_config
 
 $ nano kichain_config.json
+```yaml
 {
   "chain-id": "kichain-t-4",
   "rpc-addr": "http://127.0.0.1:26657",
@@ -41,6 +42,7 @@ $ nano kichain_config.json
   "trusting-period": "48h"
 }
 $ nano rizon_config.json
+```yaml
 {
   "chain-id": "groot-011",
   "rpc-addr": "http://127.0.0.1:26652",
