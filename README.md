@@ -103,7 +103,6 @@ Generated path(transfer), run 'rly paths show transfer --yaml' to see details
 
 $ nano ~/.relayer/config/config.yaml 
 
-```yaml
 {
 global:
   api-listen-addr: :5183
@@ -216,7 +215,7 @@ We can find channes of the networks in path sections of the config file
 
 $ nano ~/.relayer/config/config.yaml
 
-```yaml
+
 {
 paths:
   transfer:
