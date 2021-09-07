@@ -16,11 +16,13 @@ Everything is in order and cross-transactions are available between these two ne
 
 **1) We need to install a relayer**
 https://github.com/cosmos/relayer
+
 $ git clone git@github.com:cosmos/relayer.git
 $ git checkout v0.9.3
 $ cd relayer && make install
 
 **2) We need to initialize it**
+
 $ rly config init
 
 **3) And create chain configurations**
@@ -281,10 +283,10 @@ EOF
 
 **16) After that we shall start a service file and check logs**
 
-sudo systemctl daemon-reload
-sudo systemctl enable rlyd
-sudo systemctl start rlyd 
-journalctl -u rlyd -f 
+$ sudo systemctl daemon-reload
+$ sudo systemctl enable rlyd
+$ sudo systemctl start rlyd 
+$ journalctl -u rlyd -f 
 
 Started relayer client.
 I[2021-09-07|11:19:35.699] - listening to tx events from kichain-t-4...
