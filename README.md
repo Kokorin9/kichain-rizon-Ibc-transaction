@@ -32,6 +32,7 @@ $ mkdir rly_config
 $ cd rly_config
 
 $ nano kichain_config.json
+
 ```yaml
 {
   "chain-id": "kichain-t-4",
@@ -41,6 +42,7 @@ $ nano kichain_config.json
   "gas-prices": "0.025utki",
   "trusting-period": "48h"
 }
+
 $ nano rizon_config.json
 ```yaml
 {
@@ -214,6 +216,8 @@ We can find channes of the networks in path sections of the config file
 
 $ nano ~/.relayer/config/config.yaml
 
+```yaml
+{
 paths:
   transfer:
     src:
@@ -234,6 +238,7 @@ paths:
       version: ics20-1
     strategy:
       type: naive
+      }
 
 
 $ kid tx ibc-transfer transfer transfer channel-50 rizon19hnej3ucqqls5wcn40cv00s9qvasgy38jvpnqu 1000utki --from kokorin9 --fees=5000utki --gas=auto --chain-id kichain-t-4 --home /root/testnet/kid --keyring-dir /root/.kid/
