@@ -23,7 +23,7 @@ Everything is in order and cross-transactions are available between these two ne
 **1) We need to install a relayer**
 https://github.com/cosmos/relayer
 ```
-$ git clone git@github.com:cosmos/relayer.git
+$ git clone https://github.com/cosmos/relayer
 $ cd relayer
 $ git checkout v0.9.3 && make install
 ```
