@@ -90,13 +90,13 @@ rly q balance groot-011
 ```
 **8) Next step is clients initializing for both networks**
 ```
-$ rly light init kichain-t-4
+$ rly light init kichain-t-4 --force
 ```
 ```
 successfully created light client for kichain-t-4 by trusting endpoint http://127.0.0.1:26657...
 ```
 ```
-$ rly light init groot-011
+$ rly light init groot-011 --force
 ```
 ```
 successfully created light client for groot-011 by trusting endpoint http://127.0.0.1:26652…
