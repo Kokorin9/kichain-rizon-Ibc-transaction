@@ -62,7 +62,7 @@ $ nano rizon_config.json
 **4) We will then add this to relayer config**
 ```
 $ rly chains add -f kichain_config.json
-$ rly chains add rizon_config.json
+$ rly chains add -f rizon_config.json
 ```
 **5) Next step is creating new keys and addresses**
 ```
