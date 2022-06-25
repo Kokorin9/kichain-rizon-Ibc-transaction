@@ -24,8 +24,8 @@ Everything is in order and cross-transactions are available between these two ne
 https://github.com/cosmos/relayer
 ```
 $ git clone git@github.com:cosmos/relayer.git
-$ git checkout v0.9.3
-$ cd relayer && make install
+$ cd relayer
+$ git checkout v0.9.3 && make install
 ```
 **2) We need to initialize it**
 ```
